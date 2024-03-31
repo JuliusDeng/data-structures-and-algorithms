@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h2>2.栈的应用2</h2>
+	</body>
+	<script>
+		 /* 栈（stack）又名堆栈，它是一种运算受限的线性表。
+		 限定仅在表尾进行插入和删除操作的线性表。这一端被称为栈顶，相对地，把另一端称为栈底。
+		 向一个栈插入新元素又称作进栈、入栈或压栈，它是把新元素放到栈顶元素的上面，使之成为新的栈顶元素；
+		 从一个栈删除元素又称作出栈或退栈，它是把栈顶元素删除掉，使其相邻的元素成为新的栈顶元素。 */
+		 
+		// 特点：后进先出即Last in First Out
+		
+		class Stack {
+			// constructor() {
+				
+			// }
+			items = []
+			// 入栈
+			push(data) {
+				return this.items.push(data)
+			}
+			// 出栈
+			pop() {
+				return this.items.pop()
+			}
+			
+			// 栈的长度
+			size() {
+				return this.items.length
+			}
+			// 判断是否为空栈
+			isEmpty() {
+				return this.items.length === 0
+			}
+			clear() {
+				this.items = []
+			}
+			// 栈元素转成字符串
+			toString() {
+				return this.items.join('')
+			}
+		}
+		
+		const p1 = new Stack()
+		// var num = 50 % 2
+		// console.log( num);
+		// console.log( Math.floor(25/2));
+		
+		// function convert(decNumber) {
+		// 	let remStack = new Stack()
+		// 	let number = decNumber
+		// 	let string = ''
+			
+		// 	// 压入
+		// 	while (number>0){
+		// 		remStack.push(number%2)
+		// 		number = Math.floor(number/2)
+		// 	}
+		// 	// 取出
+		// 	while(!(remStack.isEmpty())) {
+		// 		string += remStack.pop()
+		// 	}
+		// 	return string
+		// }
+		// convert(50)
+		
+		function convert(decNumber, base) {
+			let remStack = new Stack()
+			let number = decNumber
+			let string = ''
+			let baseString = '0123456789ABCDEF'
+			// 压入
+			while (number>0){
+				remStack.push(number%base)
+				console.log('push', number%base);
+				number = Math.floor(number/base)
+				console.log('floor', number);
+			}
+			// 取出
+			while(!(remStack.isEmpty())) {
+				string += baseString[remStack.pop()]
+			}
+			return string
+		}
+		console.log(convert(500, 16));
+		
+	</script>
+</html>
